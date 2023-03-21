@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,23 @@ public class GameManager : MonoBehaviour
     //this is a jagged array. Which means an array of arrays
     //The difference between a jagged array and a 2D array, is that a jagged array can have multiple sub-arrays with different lengths
     //public int[][] jaggedGrid;
-    internal int numPillsLeft = 0;
+    private int _numPillsLeft = 0;
+    public int NumPillsLeft
+    {
+        get
+        {
+            return _numPillsLeft;
+        }
+        set
+        {
+            _numPillsLeft = value;
+            //if we set our numPillsLeft to be 0, we are done our level and we should reload it
+            if(_numPillsLeft <= 0) 
+            {
+                SceneManager.LoadScene("SampleScene");
+            }
+        }
+    }
     //This is a 2D array
     //0 = pill, 1 = wall, 2 = ghost, 3 = macman, 4 = specialPill
     public int[,] grid = new int[,]
@@ -57,6 +74,10 @@ public class GameManager : MonoBehaviour
                 //we saved, in the Unity editor, an array of prefabs called objectPrefabs. How do we use this gridValue to create one of these?
                 BaseObject objectClone = Instantiate(objectPrefabs[gridValue], new Vector3(i, 0, j), Quaternion.identity); //how do i create a prefab here?
                 objectClone.posInGrid = new Vector2Int(i, j);
+                if(gridValue == 0) //since 0 is for pills, every time we find a pill, add it to the list that needs to be collected
+                {
+                    NumPillsLeft++;
+                }
             }
         }
     }

@@ -38,4 +38,17 @@ public class PacBear : BaseUnit
         if (Input.GetAxis("Vertical") > 0)
             direction = new Vector2Int(0, 1);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        //for now, we are only going to look at ghosts and pills
+        if(other.GetComponent<Pill>() != null) //it will be null if it's not a pill
+        {
+            Destroy(other.gameObject);
+            GameManager.instance.NumPillsLeft--;
+        }
+        if(other.GetComponent<Ghost>() != null)
+        {
+            SceneManager.LoadScene("SampleScene"); //if we hit a ghost, reset
+        }
+    }
 }

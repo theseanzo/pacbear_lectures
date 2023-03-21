@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3557338671163779434}
   - component: {fileID: 8179289548149284889}
   - component: {fileID: 6970248349729103861}
-  - component: {fileID: 6186067855348265338}
   - component: {fileID: 1803289949697070775}
+  - component: {fileID: 6657426716170789196}
   m_Layer: 0
   m_Name: Pill
   m_TagString: Untagged
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6186067855348265338
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553596386652377386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1803289949697070775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +98,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9ec3df311fb614b949e32aaeac2ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posInGrid: {x: 0, y: 0}
+  speed: 0
+--- !u!135 &6657426716170789196
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553596386652377386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5233420292150084177
 GameObject:
   m_ObjectHideFlags: 0
