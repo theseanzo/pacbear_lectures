@@ -45,6 +45,10 @@ public class PacBear : BaseUnit
         {
             Destroy(other.gameObject);
             GameManager.instance.NumPillsLeft--;
+            //when PacBear hits a pill, this is when we trigger the pill effect
+            //before now we would simply Instantiate a new item if we wanted the pill effect
+            GameObject effect = PoolManager.instance.Spawn("EatPillEffect");
+            effect.transform.position = other.transform.position;
         }
         if(other.GetComponent<Ghost>() != null)
         {

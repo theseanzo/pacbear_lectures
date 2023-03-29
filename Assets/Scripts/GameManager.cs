@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance;
 
     public BaseObject[] objectPrefabs;
     //this is a jagged array. Which means an array of arrays
@@ -60,7 +59,6 @@ public class GameManager : MonoBehaviour
     {
         //how are we going to generate our level?
         //we need to figure out the width and height of our grid and then iterate over the entire grid, creating objects
-        GameManager.instance = this; //assign our game manager instancew that can be referenced in the world
 
         int gridSizeX = grid.GetLength(0); //when finding the length of a multi-dimensional array, we don't use .Length, we have to get the length of a particular dimension. So GetLength(0) gets the length of our first dimension (our x dimension)
         int gridSizeY = grid.GetLength(1);
